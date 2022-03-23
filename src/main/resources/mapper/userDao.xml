@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.userDao">
+    <!-- sql语句 -->
+    <insert id="InsertUser" parameterType="User">
+        insert into user values(#{usernumber},#{userid},#{username},#{userpassword},#{department},#{Identify})
+    </insert>
+
+    <select id="QueryUserByNumber" parameterType="String" resultType="User">
+        select *
+        from user
+        where usernumber = #{usernumber}
+    </select>
+
+    <select id="QueryUserByName" parameterType="String" resultType="User">
+        select *
+        from user
+        where username = #{username}
+    </select>
+</mapper>
