@@ -1,7 +1,8 @@
-package com.example.service;
+package com.example.service.impl;
 
 import com.example.mapper.userDao;
 import com.example.pojo.User;
+import com.example.service.UserService;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     @Autowired
     private userDao userDao;
 
@@ -35,5 +36,10 @@ public class UserServiceImpl implements UserService{
         User user = userDao.QueryUserByName(username);
 
         return user;
+    }
+
+    @Override
+    public int InsertApplyRoot(String usernumber, String represent) {
+        return userDao.InsertApplyRoot(usernumber, represent);
     }
 }

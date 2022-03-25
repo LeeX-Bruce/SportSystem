@@ -1,15 +1,11 @@
 package com.example.controller;
 
 import com.example.pojo.User;
-import com.example.service.UserService;
-import com.example.service.UserServiceImpl;
+import com.example.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 /**
  * @author LMH
@@ -27,7 +23,10 @@ public class UserController {
     @RequestMapping("/Login")
     @ResponseBody
     public boolean Login(String usernumber, String userpassword){
-        if(SearchByNumber(usernumber).getUserpassword().equals(userpassword))
+        User user = SearchByNumber(usernumber);
+
+
+        if(user != null && user.getUserpassword().equals(userpassword))
             return true;
         else
             return false;
@@ -57,5 +56,7 @@ public class UserController {
     //用户申请发布赛事权限
     @RequestMapping("/ApplyRoot")
     @ResponseBody
-    public void ApplyRoot(){};
+    public int ApplyRoot(String usernumber, String represent){
+        return userService.InsertApplyRoot(usernumber, represent);
+    };
 }

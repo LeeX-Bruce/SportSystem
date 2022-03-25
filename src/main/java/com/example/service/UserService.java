@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author LMH
@@ -8,7 +9,7 @@ import com.example.pojo.User;
  */
 
 public interface UserService {
-    //插入用户
+    //插入用户数据
     int InsertUser(User user);
 
     //根据userid查询用户
@@ -16,4 +17,7 @@ public interface UserService {
 
     //根据username查询用户
     User QueryUserByName(String username);
+
+    //插入申请表数据
+    int InsertApplyRoot(String usernumber, String represent);
 }

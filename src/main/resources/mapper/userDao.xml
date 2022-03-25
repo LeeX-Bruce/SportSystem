@@ -6,7 +6,13 @@
 <mapper namespace="com.example.mapper.userDao">
     <!-- sql语句 -->
     <insert id="InsertUser" parameterType="User">
-        insert into user values(#{usernumber},#{userid},#{username},#{userpassword},#{department},#{Identify})
+        insert
+        into user values(#{usernumber},#{userid},#{username},#{userpassword},#{department},#{Identify})
+    </insert>
+
+    <insert id="InsertApplyRoot">
+        insert
+        into applyroot(usernumber, represent) values(#{usernumber},#{represent})
     </insert>
 
     <select id="QueryUserByNumber" parameterType="String" resultType="User">
@@ -20,4 +26,6 @@
         from user
         where username = #{username}
     </select>
+
+
 </mapper>
